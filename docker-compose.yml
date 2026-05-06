@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: chihuahua-muffin-classifier
+    ports:
+      - "5012:5012"
+    volumes:
+      - ./uploads:/app/uploads
+      - ./templates:/app/templates
+      - ./static:/app/static
+    environment:
+      - FLASK_ENV=development
+      - PYTHONUNBUFFERED=1
+      - PORT=5012
+    restart: unless-stopped
